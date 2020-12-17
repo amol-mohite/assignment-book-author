@@ -1,0 +1,31 @@
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}  
+- content_for :page_title, @author.name_with_initial
+%section.section
+  .container
+    %article.media
+      %figure.media-left
+        %a{href: @author.photo_link, target: "_blank"}
+          %figure.image.is-128x128
+            %img{alt: "Image Processing", src: @author.photo_link.to_s}
+      .media-content
+        %p.title="#{@author.first_name } #{@author.last_name}"
+        %p 
+          Date of Birth:
+          %strong=@author.date_of_birth.strftime('%d %B, %Y')  
+      %nav.level.level-left
+        %p.level-item
+          = link_to "Edit", edit_author_path(@author), class:"button"
+        %p.level-item
+          = link_to "Delete", author_path(@author),method: :delete,data: { confirm: "Are you sure?" }, class:"button is-danger"
+    %hr
+    .content
+      .label.subtitle.is-5 Books
+      -if @author.books.count == 0
+        %small No books Available 
+      - @author.books.each do |book|
+        .media-content 
+          %strong= link_to book.title, book
+        %small
+          Published On
+          =book.created_at.strftime('%d%B,%Y')  
+        

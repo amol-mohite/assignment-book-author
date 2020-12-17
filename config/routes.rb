@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :providers
-  root 'providers#index'
+  resources :books
+  resources :authors
+  root 'books#index'
 end

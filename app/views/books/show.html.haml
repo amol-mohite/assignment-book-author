@@ -1,0 +1,38 @@
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}  
+%section.section
+  .container
+    %article.media
+      %figure.media-left
+        %a{href: @book.front_page_link, target: "_blank"}
+          %figure.image.is-128x128
+            %img{alt: "Image Processing", src: @book.front_page_link.to_s}
+      .media-content
+        %p.title=@book.title
+        .content.level-left
+          .level-item
+            %strong
+              - @book.rating.to_i.times do
+                %span.fa.fa-star{:style => "color:orange"}
+              - @book.blank_stars.times do
+                %span.fa.fa-star
+                      
+        %p 
+          Total Pages:
+          %strong=@book.no_of_pages.to_i
+        %p  
+          Published On
+          %strong=@book.created_at.strftime('%d%B,%Y')  
+      %nav.level.level-left
+        %p.level-item
+          = link_to "Edit", edit_book_path(@book), class:"button"
+        %p.level-item
+          = link_to "Delete", book_path(@book),method: :delete,data: { confirm: "Are you sure?" }, class:"button is-danger"
+    %hr
+    -unit = "\u20B9"
+    .content
+      .label.subtitle.is-5 Amount
+      .subtitle.is-5 Our Price is #{unit}#{@book.price.to_i}
+
+      .label.subtitle.is-5 Authors
+      - @book.authors.each do |author|
+        %p= link_to author.name_with_initial, author

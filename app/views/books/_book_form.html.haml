@@ -1,0 +1,29 @@
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}
+  .section.container
+    .level-item.left
+      %p.subtitle.is-5
+        -if @books.count > 0
+          %strong Total #{@books.count} Books Available
+  .section.container
+    -if @books.count==0 
+      %figure
+        %img{alt: "Image Processing", src: 'https://vanmak.in/assets/images/no_result.gif', height: "700",width:"1000"}
+    - @books.each do |book|
+      .card.card-content
+        %table.table.is-hoverable.is-striped.is-fullwidth
+          %tr
+            %td{align:"left"}
+              %a{href: "books/#{book.id}", target: "_blank"}  
+                %figure.image.is-128x128
+                  %img{alt: "Image Processing", src: book.front_page_link.to_s}
+            %td{align:"center"}
+              .title.is-4
+                = link_to book.title, book
+                -unit = "\u20B9"
+              .subtitle.is-6 #{unit}#{book.price.to_i}
+            %td{align:"right"}
+              - book.rating.to_i.times do
+                %span.fa.fa-star{:style => "color:orange"}
+              - book.blank_stars.times do
+                %span.fa.fa-star
+              .subtitle.is-6=book.created_at.strftime('%b%Y')

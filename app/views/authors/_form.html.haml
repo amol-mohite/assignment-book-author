@@ -1,0 +1,15 @@
+.section
+  = simple_form_for @author do |f|
+    .field.control
+      = f.error_notification id: 'user_error_message', class: 'form_error'
+    .field.control
+      = f.input :first_name, input_html: { class: 'input'}, wrapper: false, label_html: { class: 'label'}, placeholder:  "Sam", required: true 
+    .field.control
+      = f.input :last_name, input_html: { class: 'input'}, wrapper: false, label_html: { class: 'label'}, placeholder:  "Wilson", required: true 
+    .field.control
+      = f.input :photo_link, input_html: { class: 'input'}, wrapper: false, label_html: { class: 'label'}, placeholder:  "http://", required: true 
+    .field.control
+      =f.input :date_of_birth, as: :date, html5: true,wrapper: false, label_html: { class: 'label'},input_html: { class: 'input'}, required: true 
+    .field.control
+      = f.button :submit, class: 'button is-primary'
+

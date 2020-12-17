@@ -1,0 +1,23 @@
+%link{:href => "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}
+
+  .section.container
+    .level-item.left
+      %p.subtitle.is-5
+        -if @authors.count > 0
+          %strong Total #{@authors.count} Books Presents
+  .section.container
+    -if @authors.count==0 
+      %figure
+        %img{alt: "Image Processing", src: 'https://vanmak.in/assets/images/no_result.gif', height: "700",width:"1000"}
+    - @authors.each do |author|
+      .card.card-content
+        %table.table.is-hoverable.is-striped.is-fullwidth
+          %tr
+            %td{align:"left"}
+              %a{href: "author/#{author.id}", target: "_blank"}  
+                %figure.image.is-128x128
+                  %img{alt: "Image Processing", src: author.photo_link.to_s}
+            %td{align:"center"}
+              .title.is-4
+                = link_to "#{author.first_name} #{author.last_name}", author
+              .subtitle.is-6=author.date_of_birth.strftime('%d %B, %Y')

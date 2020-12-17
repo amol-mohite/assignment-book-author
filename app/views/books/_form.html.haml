@@ -1,0 +1,21 @@
+.section
+  = simple_form_for @book do |f|
+    .field.control
+      = f.error_notification id: 'user_error_message', class: 'form_error'
+    .field.control
+      = f.input :title, input_html: { class: 'input', required: true }, wrapper: false, label_html: { class: 'label'}, placeholder:  "Title"
+    .field.control
+      = f.input :front_page_link, input_html: { class: 'input'}, wrapper: false, label_html: { class: 'label'}, placeholder:  "http://"
+    .field.control
+      =f.input :rating, input_html: {type: 'range',step: 1,  min: 0, max: 5}, wrapper: false, label_html: { class: 'label'}, :type => "range"
+    .field.control
+      = f.input :no_of_pages, label: "Number of pages", as: :numeric, input_html: { class: 'input'}, wrapper: false, label_html: { class: 'label' }, placeholder: '10'
+    .field.control
+      -unit = "\u20B9"
+      = f.input :price, label: "Price(#{unit}) ", as: :numeric, input_html: { class: 'input'}, wrapper: false, label_html: { class: 'label' }, placeholder: "500#{unit}"
+    .field.control
+      %label.numeric.optional.label{:for => "book_authors"} Select Author
+      = f.select(:author_ids, @authors.pluck(:first_name, :id),{},{ :multiple => true, :size => 10 })
+    .field.control
+      = f.button :submit, class: 'button is-primary'
+
