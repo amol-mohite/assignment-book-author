@@ -5,20 +5,35 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+## Setup
 
-* System dependencies
+Setup procedure of development environment.
+Run `cp env.example .env` and open `.env` file to edit environment variables.
 
-* Configuration
 
-* Database creation
+### Local environment
 
-* Database initialization
+Install dependencies
 
-* How to run the test suite
+````bash
+## Install gems
+bundle install
+Start PG and setup database
+````
+```bash
+bin/rake db:create db:migrate db:seed
+````
 
-* Services (job queues, cache servers, search engines, etc.)
+Start the app
 
-* Deployment instructions
+```bash
+## API server
+bin/rails s
+```
 
-* ...
+Start console
+
+```bash
+bin/rails c
+```
+
