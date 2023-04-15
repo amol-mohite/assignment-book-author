@@ -7,6 +7,8 @@
     .field.control
       = f.input :front_page_link, input_html: { class: 'input'}, wrapper: false, label_html: { class: 'label'}, placeholder:  "http://"
     .field.control
+      = f.input :level, collection: %w[Beginner Intermediate Advanced] 
+    .field.control
       =f.input :rating, input_html: {type: 'range',step: 1,  min: 0, max: 5}, wrapper: false, label_html: { class: 'label'}, :type => "range"
     .field.control
       = f.input :no_of_pages, label: "Number of pages", as: :numeric, input_html: { class: 'input'}, wrapper: false, label_html: { class: 'label' }, placeholder: '10'

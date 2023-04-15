@@ -19,6 +19,9 @@
         %p 
           Total Pages:
           %strong=@book.no_of_pages.to_i
+        %p 
+          Level:
+          %strong=@book.level.to_s  
         %p  
           Published On
           %strong=@book.created_at.strftime('%d%B,%Y')  

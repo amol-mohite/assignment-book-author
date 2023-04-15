@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration[5.2]
       t.integer :no_of_pages
       t.integer :rating
       t.integer :price
+      t.string :level
       t.timestamps
     end
   end

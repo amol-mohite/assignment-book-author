@@ -20,6 +20,7 @@
               .title.is-4
                 = link_to book.title, book
                 -unit = "\u20B9"
+              .subtitle.is-6 Level: #{book.level.to_s}  
               .subtitle.is-6 #{unit}#{book.price.to_i}
             %td{align:"right"}
               - book.rating.to_i.times do
